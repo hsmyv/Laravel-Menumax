@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLoginRequest;
+use App\Models\Admin;
 use App\Models\IpAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,8 +38,10 @@ class AuthController extends Controller
 
     }
 
-    public function logout(){
+    public function logout(Request $request){
         Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('admin.login.form');
     }
 
@@ -59,4 +62,14 @@ class AuthController extends Controller
 
     }
 
+    function switch_account(Request $request, $id)
+    {
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        $admin = Admin::find($id);
+        Auth::login($admin);
+        return redirect()->route('admin.index');
+
+    }
 }

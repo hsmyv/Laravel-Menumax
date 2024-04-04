@@ -181,12 +181,15 @@
     <div class="profileset">
         <span class="user-img"><img src="{{asset("admin/assets/img/profiles/avator1.jpg")}}" alt="">
         <span class="status online"></span></span>
-        <a href="{{route('admin.logout')}}">
-            <div class="profilesets">
-                <h6>{{$admin->username}}</h6>
-                <h6 style="font-size: 80%">Switch Account</h6>
-            </div>
-        </a>
+        <form action="{{route('admin.switchAccount', ['id' => $admin->id])}}" method="POST" style="display: inline">
+            @csrf
+            <button style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;">
+                <div class="profilesets">
+                    <h6>{{$admin->username}}</h6>
+                    <h6 style="font-size: 80%">Switch Account</h6>
+                </div>
+            </button>
+        </form>
     </div>
     @endforeach
     <hr class="m-0">
