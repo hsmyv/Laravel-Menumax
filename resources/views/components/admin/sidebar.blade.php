@@ -12,8 +12,8 @@
     <li><a href="{{route('products.create')}}">Add Product</a></li>
     <li><a href="{{route('categories.index')}}">Category List</a></li>
     <li><a href="{{route('categories.create')}}">Add Category</a></li>
-    <li><a href="subcategorylist.html">Sub Category List</a></li>
-    <li><a href="subaddcategory.html">Add Sub Category</a></li>
+    <li><a href="{{route('subcategories.index')}}">Sub Category List</a></li>
+    <li><a href="{{route('subcategories.create')}}">Add Sub Category</a></li>
     <li><a href="brandlist.html">Brand List</a></li>
     <li><a href="addbrand.html">Add Brand</a></li>
     <li><a href="importproduct.html">Import Products</a></li>

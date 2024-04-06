@@ -25,6 +25,7 @@ class CategoryUpdateRequest extends FormRequest
             'name' => 'required',
             'code' => 'required',
             'description' => 'nullable',
+            'parent_id' => 'nullable',
             'status' => 'required'
         ];
     }

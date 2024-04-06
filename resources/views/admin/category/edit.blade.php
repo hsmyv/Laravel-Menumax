@@ -13,7 +13,7 @@
     </div>
     </div>
     @if(session()->has('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
         <strong>Success!</strong> {{session('success')}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -26,24 +26,23 @@
     @endif
     <div class="card">
     <div class="card-body">
-    <div class="row">
-
         <form action="{{route('categories.update', $category)}}" method="POST">
+    <div class="row">
             @csrf
             @method('PUT')
-            <div class="col-lg-6 col-sm-6 col-12">
+            <div class="col-lg-4 col-sm-6 col-12">
                 <div class="form-group">
                     <label>Category Name</label>
                         <input type="text" name="name" value="{{old('name',$category->name)}}">
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6 col-12">
+            <div class="col-lg-4 col-sm-6 col-12">
                 <div class="form-group">
                     <label>Category Code</label>
                         <input type="text" name="code" value="{{old('code', $category->code)}}">
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6 col-12">
+            <div class="col-lg-4 col-sm-6 col-12">
                 <div class="form-group">
                     <label>Status</label>
                         <select name="status" class="select">
@@ -95,8 +94,9 @@
                 <button class="btn btn-submit me-2">Submit</button>
                 <a href="{{route('categories.index')}}" class="btn btn-cancel">Cancel</a>
             </div>
-        </form>
     </div>
+</form>
+
     </div>
     </div>
 

@@ -4,11 +4,11 @@
 <div class="content">
 <div class="page-header">
 <div class="page-title">
-<h4>Product Category list</h4>
+<h4>Product Sub Category list</h4>
 <h6>View/Search product Category</h6>
 </div>
 <div class="page-btn">
-<a href="{{route('categories.create')}}" class="btn btn-added">
+<a href="{{route('subcategories.create')}}" class="btn btn-added">
 <img src="{{asset("admin/assets/img/icons/plus.svg")}}" class="me-1" alt="img">Add Category
 </a>
 </div>
@@ -101,7 +101,8 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
-<th>Category name</th>
+<th>Category</th>
+<th>Parent Category</th>
 <th>Category Code</th>
 <th>Description</th>
 <th>Status</th>
@@ -109,7 +110,7 @@
 </tr>
 </thead>
 <tbody>
-    @foreach ($categories as $category)
+    @foreach ($subcategories as $category)
     <tr>
         <td>
         <label class="checkboxs">
@@ -117,12 +118,8 @@
         <span class="checkmarks"></span>
         </label>
         </td>
-        <td class="productimgname">
-        <a href="javascript:void(0);" class="product-img">
-        <img src="assets/img/product/noimage.png" alt="product">
-        </a>
-        <a href="javascript:void(0);">{{$category->name}}</a>
-        </td>
+        <td><a href="javascript:void(0);">{{$category->name}}</a></td>
+        <td><a href="javascript:void(0);" style="color:{{$category->parent ? '' : 'red'}}">{{$category->parent->name ?? 'Deleted'}}</a></td>
         <td>{{$category->code}}</td>
         <td>{{$category->description}}</td>
         <td>
@@ -132,10 +129,10 @@
             </div>
         </td>
         <td>
-        <a class="me-3" href="{{route('categories.edit', $category)}}">
+        <a class="me-3" href="{{route('subcategories.edit', ['subcategory' => $category])}}">
         <img src="{{asset("admin/assets/img/icons/edit.svg")}}" alt="img">
         </a>
-        <form action="{{route('categories.destroy', $category)}}" method="POST" style="display: inline">
+        <form action="{{route('subcategories.destroy', ['subcategory' => $category])}}" method="POST" style="display: inline">
             @csrf
             @method('DELETE')
         <button style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;" type="submit">
@@ -157,28 +154,27 @@
 
 
 </x-admin.layout>
-
 <script>
-        $(document).ready(function() {
-        $('.check').click(function() {
-            var categoryId = $(this).data('category-id');
-            var newStatus = $(this).prop('checked') ? 1 : 0;
+    $(document).ready(function() {
+    $('.check').click(function() {
+        var categoryId = $(this).data('category-id');
+        var newStatus = $(this).prop('checked') ? 1 : 0;
 
-            $.ajax({
-                url: '/admin/update-category-status',
-                method: 'POST',
-                data: {
-                    categoryId: categoryId,
-                    newStatus: newStatus,
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    console.log(response);
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
+        $.ajax({
+            url: '/admin/update-category-status',
+            method: 'POST',
+            data: {
+                categoryId: categoryId,
+                newStatus: newStatus,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
         });
     });
+});
 </script>

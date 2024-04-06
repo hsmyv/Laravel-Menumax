@@ -13,8 +13,8 @@
 
 <div class="card">
 <div class="card-body">
-<div class="row">
     <form action="{{route('categories.store')}}" method="POST">
+<div class="row">
         @csrf
         <div class="col-lg-6 col-sm-6 col-12">
             <div class="form-group">
@@ -50,8 +50,9 @@
             <button class="btn btn-submit me-2">Submit</button>
             <a href="categorylist.html" class="btn btn-cancel">Cancel</a>
         </div>
-    </form>
 </div>
+</form>
+
 </div>
 </div>
 

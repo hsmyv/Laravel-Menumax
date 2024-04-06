@@ -24,6 +24,7 @@ class CategoryStoreRequest extends FormRequest
         return [
                 'name' => 'required',
                 'code' => 'required',
+                'parent_id' => 'nullable',
                 'description' => 'nullable',
         ];
     }

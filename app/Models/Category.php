@@ -14,11 +14,29 @@ class Category extends Model
         'name',
         'code',
         'description',
-        'status'
+        'status',
+        'parent_id'
     ];
 
-    public function scopeActive($query)
+    public function scopeCategoriesForDropdown($query)
     {
-        return $query->where('status', true);
+        return $query->whereNull('parent_id')->where('status', true)->latest()->get();
+    }
+    public function scopeCategories($query)
+    {
+        return $query->whereNull('parent_id')->latest()->get();
+    }
+    public function scopeSubCategories($query)
+    {
+        return $query->whereNotNull('parent_id')->where('status', true)->latest()->get();
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
     }
 }

@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->get();
+        $categories = Category::categories();
         return view('admin.category.index', compact('categories'));
     }
 
@@ -38,7 +38,6 @@ class CategoryController extends Controller
         } catch (\Throwable $e) {
             return redirect()->route('categories.create')->with('error', 'An error occurred while creating the category.');
         }
-
     }
 
     /**
@@ -63,9 +62,7 @@ class CategoryController extends Controller
     public function update(CategoryUpdateRequest $request, Category $category)
     {
             $category->update($request->validated());
-
             return redirect()->route('categories.edit', $category)->with('success', 'Category updated successfully!');
-
     }
 
     /**
@@ -75,6 +72,17 @@ class CategoryController extends Controller
     {
         $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully!');
+    }
 
+
+
+    public function update_status(Request $request)
+    {
+        $categoryId = $request->input('categoryId');
+        $newStatus = $request->input('newStatus');
+
+        Category::where('id' , $categoryId)->update([
+            'status' => $newStatus
+        ]);
     }
 }
