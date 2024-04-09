@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('parent_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('restaurant_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('name')->nullable();
             $table->string('code')->nullable();
             $table->text('description')->nullable();

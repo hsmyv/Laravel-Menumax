@@ -9,7 +9,7 @@
 <div class="page-wrapper">
 <div class="content">
 <div class="row">
-<div class="col-lg-3 col-sm-6 col-12">
+{{-- <div class="col-lg-3 col-sm-6 col-12">
 <div class="dash-widget">
 <div class="dash-widgetimg">
 <span><img src="assets/img/icons/dash1.svg" alt="img"></span>
@@ -19,8 +19,8 @@
 <h6>Total Purchase Due</h6>
 </div>
 </div>
-</div>
-<div class="col-lg-3 col-sm-6 col-12">
+</div> --}}
+{{-- <div class="col-lg-3 col-sm-6 col-12">
 <div class="dash-widget dash1">
 <div class="dash-widgetimg">
 <span><img src="assets/img/icons/dash2.svg" alt="img"></span>
@@ -30,8 +30,8 @@
 <h6>Total Sales Due</h6>
 </div>
 </div>
-</div>
-<div class="col-lg-3 col-sm-6 col-12">
+</div> --}}
+{{-- <div class="col-lg-3 col-sm-6 col-12">
 <div class="dash-widget dash2">
 <div class="dash-widgetimg">
 <span><img src="assets/img/icons/dash3.svg" alt="img"></span>
@@ -41,8 +41,8 @@
 <h6>Total Sale Amount</h6>
 </div>
 </div>
-</div>
-<div class="col-lg-3 col-sm-6 col-12">
+</div> --}}
+{{-- <div class="col-lg-3 col-sm-6 col-12">
 <div class="dash-widget dash3">
 <div class="dash-widgetimg">
 <span><img src="assets/img/icons/dash4.svg" alt="img"></span>
@@ -52,19 +52,22 @@
 <h6>Total Sale Amount</h6>
 </div>
 </div>
-</div>
-<div class="col-lg-3 col-sm-6 col-12 d-flex">
+</div> --}}
+@foreach ($restaurants as $restaurant)
+    <div id="rName" class="col-lg-3 col-sm-6 col-12 d-flex">
 <div class="dash-count">
 <div class="dash-counts">
-<h4>100</h4>
-<h5>Customers</h5>
+<h4 >{{$restaurant->name}}</h4>
+<h5>{{$restaurant->about}}</h5>
 </div>
 <div class="dash-imgs">
-<i data-feather="user"></i>
+<i data-feather="box"></i>
 </div>
 </div>
 </div>
-<div class="col-lg-3 col-sm-6 col-12 d-flex">
+@endforeach
+
+{{-- <div class="col-lg-3 col-sm-6 col-12 d-flex">
 <div class="dash-count das1">
 <div class="dash-counts">
 <h4>100</h4>
@@ -92,14 +95,14 @@
 <h4>105</h4>
 <h5>Sales Invoice</h5>
 </div>
-<div class="dash-imgs">
+ <div class="dash-imgs">
 <i data-feather="file"></i>
 </div>
 </div>
 </div>
 </div>
-
-<div class="row">
+--}}
+{{-- <div class="row">
 <div class="col-lg-7 col-sm-12 col-12 d-flex">
 <div class="card flex-fill">
 <div class="card-header pb-0 d-flex justify-content-between align-items-center">
@@ -211,8 +214,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="card mb-0">
+</div> --}}
+{{-- <div class="card mb-0">
 <div class="card-body">
 <h4 class="card-title">Expired Products</h4>
 <div class="table-responsive dataview">
@@ -284,10 +287,22 @@
 </table>
 </div>
 </div>
-</div>
+</div> --}}
 </div>
 </div>
 </div>
 
 
 </x-admin.layout>
+
+
+<script>
+    $(document).ready(function() {
+        var rName = document.getElementById('rName');
+        rName.addEventListener('click', function() {
+        window.location.href = '{{route('restaurants.edit', $restaurant)}}';
+    });
+
+
+    });
+</script>

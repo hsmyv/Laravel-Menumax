@@ -26,7 +26,7 @@
     @endif
     <div class="card">
     <div class="card-body">
-        <form action="{{route('categories.update', $category)}}" method="POST">
+        <form action="{{route('categories.update', [$restaurant,$category])}}" method="POST">
     <div class="row">
             @csrf
             @method('PUT')
@@ -92,7 +92,7 @@
             </div>
             <div class="col-lg-12">
                 <button class="btn btn-submit me-2">Submit</button>
-                <a href="{{route('categories.index')}}" class="btn btn-cancel">Cancel</a>
+                <a href="{{route('categories.index', $restaurant)}}" class="btn btn-cancel">Cancel</a>
             </div>
     </div>
 </form>

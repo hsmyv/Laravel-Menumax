@@ -15,20 +15,24 @@ class Category extends Model
         'code',
         'description',
         'status',
-        'parent_id'
+        'parent_id',
+        'restaurant_id'
     ];
 
-    public function scopeCategoriesForDropdown($query)
+    public function scopeCategoriesForDropdown($query,$id)
     {
-        return $query->whereNull('parent_id')->where('status', true)->latest()->get();
+        return $query->whereNull('parent_id')
+            ->where('status', true)
+                ->where('restaurant_id', $id)
+                    ->latest()->get();
     }
-    public function scopeCategories($query)
+    public function scopeCategories($query, $id)
     {
-        return $query->whereNull('parent_id')->latest()->get();
+        return $query->whereNull('parent_id')->where('restaurant_id', $id)->latest()->get();
     }
-    public function scopeSubCategories($query)
+    public function scopeSubCategories($query, $id)
     {
-        return $query->whereNotNull('parent_id')->where('status', true)->latest()->get();
+        return $query->whereNotNull('parent_id')->where('restaurant_id', $id)->latest()->get();
     }
 
     public function children()

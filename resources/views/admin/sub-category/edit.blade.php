@@ -26,7 +26,7 @@
     @endif
     <div class="card">
     <div class="card-body">
-        <form action="{{route('subcategories.update', $subcategory)}}" method="POST">
+        <form action="{{route('subcategories.update', [$restaurant,$subcategory])}}" method="POST">
             @csrf
             @method('PUT')
 
@@ -74,7 +74,7 @@
 
             <div class="col-lg-12">
                 <button class="btn btn-submit me-2">Submit</button>
-                <a href="{{route('subcategories.index')}}" class="btn btn-cancel">Cancel</a>
+                <a href="{{route('subcategories.index', $restaurant)}}" class="btn btn-cancel">Cancel</a>
             </div>
     </div>
 </form>

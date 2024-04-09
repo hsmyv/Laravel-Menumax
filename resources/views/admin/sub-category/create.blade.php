@@ -6,7 +6,7 @@
 <div class="content">
 <div class="page-header">
 <div class="page-title">
-<h4>Product Add sub Category</h4>
+<h4>Product Add Sub Category</h4>
 <h6>Create new product Category</h6>
 </div>
 </div>
@@ -19,7 +19,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    <form action="{{route('subcategories.store')}}" method="POST">
+    <form action="{{route('subcategories.store', $restaurant)}}" method="POST">
         @csrf
 <div class="row">
     <div class="col-lg-4 col-sm-6 col-12">
@@ -53,7 +53,7 @@
     </div>
         <div class="col-lg-12">
             <button class="btn btn-submit me-2">Submit</button>
-            <a href="categorylist.html" class="btn btn-cancel">Cancel</a>
+            <a href="{{route('subcategories.index', $restaurant)}}" class="btn btn-cancel">Cancel</a>
         </div>
 </div>
 </form>

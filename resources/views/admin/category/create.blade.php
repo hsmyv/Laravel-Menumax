@@ -13,8 +13,15 @@
 
 <div class="card">
 <div class="card-body">
-    <form action="{{route('categories.store')}}" method="POST">
-<div class="row">
+    @if(session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Warning!</strong> {{session('error')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    <form action="{{route('categories.store', $restaurant)}}" method="POST">
+    <div class="row">
         @csrf
         <div class="col-lg-6 col-sm-6 col-12">
             <div class="form-group">
@@ -48,7 +55,7 @@
         </div>
         <div class="col-lg-12">
             <button class="btn btn-submit me-2">Submit</button>
-            <a href="categorylist.html" class="btn btn-cancel">Cancel</a>
+            <a href="{{route('categories.index', $restaurant)}}" class="btn btn-cancel">Cancel</a>
         </div>
 </div>
 </form>

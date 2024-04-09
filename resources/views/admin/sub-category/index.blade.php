@@ -8,8 +8,8 @@
 <h6>View/Search product Category</h6>
 </div>
 <div class="page-btn">
-<a href="{{route('subcategories.create')}}" class="btn btn-added">
-<img src="{{asset("admin/assets/img/icons/plus.svg")}}" class="me-1" alt="img">Add Category
+<a href="{{route('subcategories.create', $restaurant)}}" class="btn btn-added">
+<img src="{{asset("admin/assets/img/icons/plus.svg")}}" class="me-1" alt="img">Add Sub Category
 </a>
 </div>
 </div>
@@ -31,13 +31,13 @@
 <div class="wordset">
 <ul>
 <li>
-<a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img src="assets/img/icons/pdf.svg" alt="img"></a>
+<a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img src="{{asset("admin/assets/img/icons/pdf.svg")}}" alt="img"></a>
 </li>
 <li>
-<a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img src="assets/img/icons/excel.svg" alt="img"></a>
+<a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img src="{{asset("admin/assets/img/icons/excel.svg")}}" alt="img"></a>
 </li>
 <li>
-<a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img src="assets/img/icons/printer.svg" alt="img"></a>
+<a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img src="{{asset("admin/assets/img/icons/printer.svg")}}" alt="img"></a>
 </li>
 </ul>
 </div>
@@ -72,7 +72,7 @@
 </div>
 <div class="col-lg-1 col-sm-6 col-12 ms-auto">
 <div class="form-group">
-<a class="btn btn-filters ms-auto"><img src="assets/img/icons/search-whites.svg" alt="img"></a>
+<a class="btn btn-filters ms-auto"><img src="{{asset("admin/assets/img/icons/search-whites.svg")}}" alt="img"></a>
 </div>
 </div>
 </div>
@@ -129,10 +129,10 @@
             </div>
         </td>
         <td>
-        <a class="me-3" href="{{route('subcategories.edit', ['subcategory' => $category])}}">
+        <a class="me-3" href="{{route('subcategories.edit', [$restaurant,$category])}}">
         <img src="{{asset("admin/assets/img/icons/edit.svg")}}" alt="img">
         </a>
-        <form action="{{route('subcategories.destroy', ['subcategory' => $category])}}" method="POST" style="display: inline">
+        <form action="{{route('subcategories.destroy', [$restaurant,$category])}}" method="POST" style="display: inline">
             @csrf
             @method('DELETE')
         <button style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;" type="submit">
