@@ -98,11 +98,162 @@
 </div>
 </form>
 
-</div>
-</div>
 
 </div>
 </div>
 </div>
+</div>
 
+
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="page-header">
+    <div class="page-title">
+    <h4>Opening time</h4>
+    </div>
+    </div>
+    @if(session()->has('openingTime'))
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> {{session('openingTime')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+    <div class="card">
+    <div class="card-body">
+        <form action="{{route('admin.update.openingTime', $restaurant)}}" method="POST">
+            @method('PUT')
+            @csrf
+
+    <div class="row">
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Monday</label>
+        <input type="text" name="monday" value="{{old('monday', $openingTime->monday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Tuesday</label>
+        <input type="text" name="tuesday" value="{{old('tuesday', $openingTime->tuesday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Wednesday</label>
+        <input type="text" name="wednesday" value="{{old('wednesday', $openingTime->wednesday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Thursday</label>
+        <input type="text" name="thursday" value="{{old('thursday', $openingTime->thursday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Friday</label>
+        <input type="text" name="friday" value="{{old('friday', $openingTime->friday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Saturday</label>
+        <input type="text" name="saturday" value="{{old('saturday', $openingTime->saturday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Sunday</label>
+        <input type="text" name="sunday" value="{{old('sunday', $openingTime->sunday)}}">
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <button class="btn btn-submit me-2">Update</button>
+    </div>
+    </div>
+    </form>
+
+
+    </div>
+    </div>
+    </div>
+</div>
+
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="page-header">
+    <div class="page-title">
+    <h4>Delivery Information</h4>
+    </div>
+    </div>
+    @if(session()->has('deliveryInformation'))
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> {{session('deliveryInformation')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+    <div class="card">
+    <div class="card-body">
+        <form action="{{route('admin.update.deliveryInformation', $restaurant)}}" method="POST">
+            @method('PUT')
+            @csrf
+
+    <div class="row">
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Monday</label>
+        <input type="text" name="monday" value="{{old('monday', $deliveryInformation->monday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Tuesday</label>
+        <input type="text" name="tuesday" value="{{old('tuesday', $deliveryInformation->tuesday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Wednesday</label>
+        <input type="text" name="wednesday" value="{{old('wednesday', $deliveryInformation->wednesday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Thursday</label>
+        <input type="text" name="thursday" value="{{old('thursday', $deliveryInformation->thursday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Friday</label>
+        <input type="text" name="friday" value="{{old('friday', $deliveryInformation->friday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Saturday</label>
+        <input type="text" name="saturday" value="{{old('saturday', $deliveryInformation->saturday)}}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+        <div class="form-group">
+        <label>Sunday</label>
+        <input type="text" name="sunday" value="{{old('sunday', $deliveryInformation->sunday)}}">
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <button class="btn btn-submit me-2">Update</button>
+    </div>
+    </div>
+    </form>
+
+
+    </div>
+    </div>
+    </div>
+</div>
 </x-admin.layout>

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OpeningTimeUpdateRequest;
 use App\Http\Requests\RestaurantStoreRequest;
 use App\Http\Requests\RestaurantUpdateRequest;
+use App\Models\DeliveryInformation;
+use App\Models\OpeningTime;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
@@ -31,8 +34,10 @@ class RestaurantController extends Controller
      */
     public function store(RestaurantStoreRequest $request)
     {
-        Restaurant::create(array_merge($request->validated(), ['admin_id' => auth('admin')->id()]));
-        return redirect()->route('admin.index');
+        $restaurant = Restaurant::create(array_merge($request->validated(), ['admin_id' => auth('admin')->id()]));
+        DeliveryInformation::create(['restaurant_id' => $restaurant->id]);
+        OpeningTime::create(['restaurant_id' => $restaurant->id]);
+        return redirect()->route('admins.index');
     }
 
     /**
@@ -48,7 +53,11 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('admin.restaurant.edit' , compact('restaurant'));
+
+       $openingTime = $restaurant->openingTime;
+       $deliveryInformation = $restaurant->deliveryInformation;
+        return view('admin.restaurant.edit' , compact('restaurant', 'openingTime', 'deliveryInformation'));
+
     }
 
     /**
@@ -63,8 +72,56 @@ class RestaurantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+        return redirect()->route('admins.index');
+    }
+
+    public function openingTime(Restaurant $restaurant, OpeningTimeUpdateRequest $request)
+    {
+        $openingTime = $restaurant->openingTime;
+        $validatedData = $request->validated();
+
+        $openingTime->update([
+            'monday' => $validatedData['monday'], // Update each weekday column individually
+            'tuesday' => $validatedData['tuesday'],
+            'wednesday' => $validatedData['wednesday'],
+            'thursday' => $validatedData['thursday'],
+            'friday' => $validatedData['friday'],
+            'saturday' => $validatedData['saturday'],
+            'sunday' => $validatedData['sunday'],
+        ]);
+
+        return redirect()->route('restaurants.edit', $restaurant)->with('openingTime', 'Restaurant updated successfully!');
+
+    }
+
+    public function deliveryInformation(Restaurant $restaurant, OpeningTimeUpdateRequest $request)
+    {
+        $deliveryInformation = $restaurant->deliveryInformation;
+        $validatedData = $request->validated();
+
+        $deliveryInformation->update([
+            'monday' => $validatedData['monday'], // Update each weekday column individually
+            'tuesday' => $validatedData['tuesday'],
+            'wednesday' => $validatedData['wednesday'],
+            'thursday' => $validatedData['thursday'],
+            'friday' => $validatedData['friday'],
+            'saturday' => $validatedData['saturday'],
+            'sunday' => $validatedData['sunday'],
+        ]);
+
+        return redirect()->route('restaurants.edit', $restaurant)->with('deliveryInformation', 'Restaurant updated successfully!');
+
+    }
+    public function update_status(Request $request)
+    {
+        $restaurantId = $request->input('restaurantId');
+        $newStatus = $request->input('newStatus');
+
+        Restaurant::where('id' , $restaurantId)->update([
+            'status' => $newStatus
+        ]);
     }
 }

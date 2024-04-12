@@ -7,7 +7,7 @@
 <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern,  html5, responsive">
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <meta name="robots" content="noindex, nofollow">
-<title>Everything Management System</title>
+<title>Inventory Management System</title>
 
 <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.jpg">
 
@@ -53,6 +53,9 @@
 <script src="{{asset("admin/assets/plugins/select2/js/select2.min.js")}}"></script>
 <script src="{{asset("admin/assets/plugins/sweetalert/sweetalert2.all.min.js")}}"></script>
 <script src="{{asset("admin/assets/plugins/sweetalert/sweetalerts.min.js")}}"></script>
+
+<script src="{{asset("admin/assets/js/moment.min.js")}}"></script>
+<script src="{{asset("admin/assets/js/bootstrap-datetimepicker.min.js")}}"></script>
 
 <script src="{{asset("admin/assets/plugins/apexchart/apexcharts.min.js")}}"></script>
 <script src="{{asset("admin/assets/plugins/apexchart/chart-data.js")}}"></script>

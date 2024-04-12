@@ -19,5 +19,14 @@ class Restaurant extends Model
         return $this->belongsTo(Admin::class);
     }
 
+    public function openingTime()
+    {
+        return $this->hasOne(OpeningTime::class);
+    }
+    public function deliveryInformation()
+    {
+        return $this->hasOne(DeliveryInformation::class);
+    }
+
 
 }

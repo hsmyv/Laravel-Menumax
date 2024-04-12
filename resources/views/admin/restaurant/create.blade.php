@@ -76,7 +76,7 @@
 </div>
 </div>
 <div class="col-lg-12">
-    <button class="btn btn-submit me-2">Submit</button>
+    <button class="btn btn-submit me-2">Add</button>
     <a href="productlist.html" class="btn btn-cancel">Cancel</a>
 </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Admin;
 use App\Models\IpAddress;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -40,5 +41,10 @@ class AppServiceProvider extends ServiceProvider
 
         // View::share('components.admin.header',["admins" =>  $admins]);
 
+
+        View::composer('*', function ($view) {
+            $admins = Admin::all();
+            $view->with('admins', $admins);
+        });
     }
 }

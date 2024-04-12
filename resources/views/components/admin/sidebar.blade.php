@@ -3,33 +3,47 @@
     <div id="sidebar-menu" class="sidebar-menu">
     <ul>
     <li class="active">
-    <a href="{{(route('admin.index'))}}"><img src="{{asset("admin/assets/img/icons/dashboard.svg")}}" alt="img"><span> Dashboard</span> </a>
-    </li>
-    <li class="active">
-        <a href="{{route('restaurants.create')}}"><img src="{{asset("admin/assets/img/icons/dashboard.svg")}}" alt="img"><span> Add Restaurant</span> </a>
+    <a href="{{(route('admins.index'))}}"><img src="{{asset("admin/assets/img/icons/dashboard.svg")}}" alt="img"><span> Dashboard</span> </a>
     </li>
         @php
             $admin = auth('admin')->user();
         @endphp
-        @foreach ($admin->restaurants as $restaurant)
+        @if ($admin->role == 0)
+            <li class="active">
+                <a href="{{route('restaurants.create')}}"><img src="{{asset("admin/assets/img/icons/dashboard.svg")}}" alt="img"><span> Add Restaurant</span> </a>
+            </li>
+            @foreach ($admin->restaurants as $restaurant)
 
-        <li class="submenu">
-        <a href="javascript:void(0);"><img src="{{asset("admin/assets/img/icons/product.svg")}}" alt="img"><span> {{$restaurant->name}}</span> <span class="menu-arrow"></span></a>
-        <ul>
-        <li><a href="{{route('restaurants.edit', $restaurant)}}">Modify</a></li>
-        <li><a href="{{route('products.index',   $restaurant->id)}}">Product List</a></li>
-        <li><a href="{{route('products.create',  $restaurant->id)}}">Add Product</a></li>
-        <li><a href="{{route('categories.index', $restaurant->id)}}">Category List</a></li>
-        <li><a href="{{route('categories.create',  $restaurant->id)}}">Add Category</a></li>
-        <li><a href="{{route('subcategories.index', $restaurant->id)}}">Sub Category List</a></li>
-        <li><a href="{{route('subcategories.create',  $restaurant->id)}}">Add Sub Category</a></li>
-        <li><a href="brandlist.html">Brand List</a></li>
-        <li><a href="addbrand.html">Add Brand</a></li>
-        <li><a href="importproduct.html">Import Products</a></li>
-        <li><a href="barcode.html">Print Barcode</a></li>
-        </ul>
-        </li>
-        @endforeach
+                <li class="submenu">
+                <a href="javascript:void(0);"><img src="{{asset("admin/assets/img/icons/product.svg")}}" alt="img"><span> {{$restaurant->name}}</span> <span class="menu-arrow"></span></a>
+                <ul>
+                <li><a href="{{route('restaurants.edit', $restaurant)}}">Modify</a></li>
+                <li><a href="{{route('products.index',   $restaurant->id)}}">Product List</a></li>
+                <li><a href="{{route('products.create',  $restaurant->id)}}">Add Product</a></li>
+                <li><a href="{{route('categories.index', $restaurant->id)}}">Category List</a></li>
+                <li><a href="{{route('categories.create',  $restaurant->id)}}">Add Category</a></li>
+                <li><a href="{{route('subcategories.index', $restaurant->id)}}">Sub Category List</a></li>
+                <li><a href="{{route('subcategories.create',  $restaurant->id)}}">Add Sub Category</a></li>
+                <li><a href="brandlist.html">Brand List</a></li>
+                <li><a href="addbrand.html">Add Brand</a></li>
+                <li><a href="importproduct.html">Import Products</a></li>
+                <li><a href="barcode.html">Print Barcode</a></li>
+                </ul>
+                </li>
+            @endforeach
+        @else
+            <li class="active">
+                <a href="{{route('admins.create')}}"><img src="{{asset("admin/assets/img/icons/users1.svg")}}" alt="img"><span> Add Admin +</span> </a>
+            </li>
+            @foreach ($admins->where('role', '!=', 1) as $admin)
+            <li class="submenu">
+                <a href="javascript:void(0);"><img src="{{asset("admin/assets/img/icons/product.svg")}}" alt="img"><span> {{$admin->username}}</span> <span class="menu-arrow"></span></a>
+                <ul>
+                    <li><a href="{{route('admins.show', $admin)}}">Show</a></li>
+                </ul>
+                </li>
+            @endforeach
+        @endif
 
     <li class="submenu">
     <a href="javascript:void(0);"><img src="{{asset("admin/assets/img/icons/sales1.svg")}}" alt="img"><span> Sales</span> <span class="menu-arrow"></span></a>

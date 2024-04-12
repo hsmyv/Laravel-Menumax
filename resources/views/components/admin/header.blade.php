@@ -3,10 +3,10 @@
     <div class="header">
 
         <div class="header-left active">
-            <a href="{{route('admin.index')}}" class="logo">
+            <a href="{{route('admins.index')}}" class="logo">
                 <img src="{{asset("admin/assets/img/logo.png")}}" alt="">
             </a>
-            <a href="{{route('admin.index')}}" class="logo-small">
+            <a href="{{route('admins.index')}}" class="logo-small">
                 <img src="{{asset("admin/assets/img/logo-small.png")}}" alt="">
             </a>
             <a id="toggle_btn" href="javascript:void(0);"></a>

@@ -29,7 +29,7 @@ class AuthController extends Controller
 
         if (Auth::guard('admin')->attempt($validated, $request->boolean('remember'))) {
                 $this->ip_address();
-                return redirect()->route('admin.index');
+                return redirect()->route('admins.index');
         }
             throw ValidationException::withMessages([
                 'error' => 'Invalid Credentials'
@@ -69,7 +69,7 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         $admin = Admin::find($id);
         Auth::login($admin);
-        return redirect()->route('admin.index');
+        return redirect()->route('admins.index');
 
     }
 }
