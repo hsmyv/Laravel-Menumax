@@ -7,6 +7,8 @@
 <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern,  html5, responsive">
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <meta name="robots" content="noindex, nofollow">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <title>Inventory Management System</title>
 
 <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.jpg">

@@ -16,10 +16,10 @@
         <div class="row">
             <div class="col-lg-8 m-auto">
                 <div class="about-video">
-                    <div class="about-video-img" style="background-image: url({{asset("user/assets/images/about.jpg")}});">
+                    <div class="about-video-img" style="background-image: url('{{ $restaurant->getFirstMediaUrl('restaurant-main-image') }}');">
                     </div>
                     <div class="play-btn-wp">
-                        <a href="{{asset("user/assets/images/video.mp4")}}" data-fancybox="video" class="play-btn">
+                        <a href="{{ $restaurant->getFirstMediaUrl('restaurant-main-video') ?: asset('user/assets/images/video.mp4') }}" data-fancybox="video" class="play-btn">
                             <i class="uil uil-play"></i>
 
                         </a>

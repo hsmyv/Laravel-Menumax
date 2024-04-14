@@ -2,7 +2,7 @@
 @props(['restaurant'])
 <div class="col-lg-4 swiper-slide">
     <div class="team-box text-center">
-        <a href="{{route('main.restaurant.show', $restaurant)}}"><div style="background-image: url(user/assets/images/chef/c1.jpg);"
+        <a href="{{route('main.restaurant.show', $restaurant)}}"><div style="background-image: url({{ $restaurant->getFirstMediaUrl('restaurant-main-image')}});"
             class="team-img back-img">
         </div></a>
 

@@ -14,7 +14,7 @@
 
 <div class="card">
 <div class="card-body">
-    <form action="{{route('restaurants.store')}}" method="POST">
+    <form action="{{route('restaurants.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
 <div class="row">
@@ -63,17 +63,29 @@
 </div>
 </div>
 
-<div class="col-lg-12">
+<div class="col-lg-6">
 <div class="form-group">
-<label> Product Image</label>
+<label> Restaurant Image</label>
 <div class="image-upload">
-<input type="file">
+<input type="file" name="restaurant-main-image">
 <div class="image-uploads">
 <img src="{{asset("admin/assets/img/icons/upload.svg")}}" alt="img">
 <h4>Drag and drop a file to upload</h4>
 </div>
 </div>
 </div>
+</div>
+<div class="col-lg-6">
+    <div class="form-group">
+    <label>Restaurant Video</label>
+    <div class="image-upload">
+    <input type="file" name="restaurant-main-video" accept="video/mp4">
+    <div class="image-uploads">
+    <img src="{{asset("admin/assets/img/icons/upload.svg")}}" alt="img">
+    <h4>Drag and drop a file to upload</h4>
+    </div>
+    </div>
+    </div>
 </div>
 <div class="col-lg-12">
     <button class="btn btn-submit me-2">Add</button>

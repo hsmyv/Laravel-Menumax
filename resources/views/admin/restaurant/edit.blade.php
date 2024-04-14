@@ -19,7 +19,7 @@
 @endif
 <div class="card">
 <div class="card-body">
-    <form action="{{route('restaurants.update', $restaurant)}}" method="POST">
+    <form action="{{route('restaurants.update', $restaurant)}}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
 
@@ -80,11 +80,11 @@
 </div>
 </div>
 
-<div class="col-lg-12">
+<div class="col-lg-6">
 <div class="form-group">
-<label> Product Image</label>
+<label> Restaurant Image</label>
 <div class="image-upload">
-<input type="file">
+<input type="file" name="restaurant-main-image">
 <div class="image-uploads">
 <img src="{{asset("admin/assets/img/icons/upload.svg")}}" alt="img">
 <h4>Drag and drop a file to upload</h4>
@@ -92,8 +92,63 @@
 </div>
 </div>
 </div>
+<div class="col-lg-6">
+    <div class="form-group">
+    <label>Restaurant Video</label>
+    <div class="image-upload">
+    <input type="file" name="restaurant-main-video" accept="video/mp4">
+    <div class="image-uploads">
+    <img src="{{asset("admin/assets/img/icons/upload.svg")}}" alt="img">
+    <h4>Drag and drop a file to upload</h4>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+<div class="col-12">
+    <div class="product-list">
+        <ul class="row">
+            @if ($restaurant->getFirstMediaUrl('restaurant-main-image'))
+            <li>
+                <div class="productviews">
+                    <div class="productviewsimg">
+                        <img src="{{ $restaurant->getFirstMediaUrl('restaurant-main-image')}}" alt="img">
+                    </div>
+                    <div class="productviewscontent">
+                        <div class="productviewsname">
+                            <h2>{{$restaurant->getFirstMedia('restaurant-main-image')->file_name}}</h2>
+                            <h3>{{$restaurant->getFirstMedia('restaurant-main-image')->humanReadableSize}}</h3>
+                        </div>
+                        <a  id="removeRestaurantMainImageBtn" data-media-id="{{$restaurant->getFirstMedia('restaurant-main-image')->id}}" href="javascript:void(0);" class="hideset">x</a>
+                    </div>
+                </div>
+            </li>
+            @endif
+            @if ($restaurant->getFirstMediaUrl('restaurant-main-video'))
+            <li>
+                <div class="productviews">
+                    <div class="productviewsimg">
+                        <video src="{{ $restaurant->getFirstMediaUrl('restaurant-main-video') }}" width="100" height="100" autoplay muted loop></video>
+                    </div>
+                    <div class="productviewscontent">
+                        <div class="productviewsname">
+                            <h2>{{$restaurant->getFirstMedia('restaurant-main-video')->file_name}}</h2>
+                            <h3>{{$restaurant->getFirstMedia('restaurant-main-video')->humanReadableSize}}</h3>
+                        </div>
+                        <a  id="removeRestaurantMainImageBtn" data-media-id="{{$restaurant->getFirstMedia('restaurant-main-video')->id}}" href="javascript:void(0);" class="hideset">x</a>
+                    </div>
+                </div>
+            </li>
+            @endif
+        </ul>
+    </div>
+
+</div>
+
+
 <div class="col-lg-12">
-    <button class="btn btn-submit me-2">Submit</button>
+    <button class="btn btn-submit me-2">Update</button>
 </div>
 </div>
 </form>
@@ -257,3 +312,26 @@
     </div>
 </div>
 </x-admin.layout>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+        $(document).on('click', '#removeRestaurantMainImageBtn', function() {
+            var mediaId = $(this).data('media-id');
+            var $button = $(this); // Store a reference to the clicked button
+
+            $.ajax({
+                url: '{{route('restaurant-main-image.delete')}}',
+                method: 'POST',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: { mediaId: mediaId },
+                success: function(response) {
+                    $button.closest('.img-single').remove();
+                },
+                error: function(error) {
+                    // Handle errors, if any
+                }
+            });
+        });
+    });
+</script>

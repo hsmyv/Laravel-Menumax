@@ -10,6 +10,7 @@ use App\Models\DeliveryInformation;
 use App\Models\OpeningTime;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class RestaurantController extends Controller
 {
@@ -37,6 +38,8 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::create(array_merge($request->validated(), ['admin_id' => auth('admin')->id()]));
         DeliveryInformation::create(['restaurant_id' => $restaurant->id]);
         OpeningTime::create(['restaurant_id' => $restaurant->id]);
+        uploadImage($restaurant, 'restaurant-main-image');
+        uploadImage($restaurant, 'restaurant-main-video');
         return redirect()->route('admins.index');
     }
 
@@ -66,6 +69,8 @@ class RestaurantController extends Controller
     public function update(RestaurantUpdateRequest $request, Restaurant $restaurant)
     {
         $restaurant->update($request->validated());
+        uploadImage($restaurant, 'restaurant-main-image');
+        uploadImage($restaurant, 'restaurant-main-video');
         return redirect()->route('restaurants.edit', $restaurant)->with('success', 'Restaurant updated successfully!');
     }
 
@@ -123,5 +128,14 @@ class RestaurantController extends Controller
         Restaurant::where('id' , $restaurantId)->update([
             'status' => $newStatus
         ]);
+    }
+
+    public function remove_main_image(Request $request)
+    {
+        $media = Media::find($request->mediaId);
+        if ($media) {
+            $media->delete();
+        }
+
     }
 }
