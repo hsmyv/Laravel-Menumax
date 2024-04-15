@@ -16,10 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('restaurant_id')->constrained()->cascadeOnDelete();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->string('name');
-            $table->integer('price');
-            $table->text('description');
-
-
+            $table->decimal('price');
+            $table->text('description')->nullable();
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

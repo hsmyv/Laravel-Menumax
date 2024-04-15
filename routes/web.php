@@ -15,8 +15,11 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('/admin/update-category-status',[CategoryController::class, 'update_status'])->name('admin.update.categoryStatus');
     Route::post('/admin/update-restaurant-status',[RestaurantController::class, 'update_status'])->name('admin.update.restaurantStatus');
     Route::post('/admin/update-admin-status',[AdminController::class, 'update_status'])->name('admin.update.adminStatus');
+    Route::post('/admin/update-product-status',[ProductController::class, 'update_status'])->name('admin.update.productStatus');
     Route::put('/admin/restaurants/opening-time/{restaurant}', [RestaurantController::class, 'openingTime'])->name('admin.update.openingTime');
     Route::put('/admin/restaurants/deliveryInformation/{restaurant}', [RestaurantController::class, 'deliveryInformation'])->name('admin.update.deliveryInformation');
+    Route::post("/restaurant-main-image", [RestaurantController::class,"remove_main_image"])->name("restaurant-main-image.delete");
+    Route::post("/product-image", [ProductController::class,"remove_image"])->name("product-image.delete");
     Route::resource('/admins', AdminController::class);
     Route::resource('/admin/{restaurant}/products', ProductController::class);
     Route::resource('/admin/{restaurant}/categories', CategoryController::class);
@@ -38,7 +41,6 @@ Route::group(
         Route::get('/', [MainController::class, 'index'])->name('main.index');
         Route::get('/restaurants', [MainController::class, 'restaurants'])->name('main.restaurant.index');
         Route::get('/restaurants/show/{restaurant}', [MainController::class, 'restaurantsShow'])->name('main.restaurant.show');
-        Route::post("/restaurant-main-image", [RestaurantController::class,"remove_main_image"])->name("restaurant-main-image.delete");
 
     });
 
