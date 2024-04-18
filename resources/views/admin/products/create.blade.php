@@ -14,13 +14,16 @@
 
 <div class="card">
 <div class="card-body">
-<form action="{{route('products.store', $restaurant)}}" method="post" enctype="multipart/form-data">
+<form class="needs-validation" novalidate action="{{route('products.store', $restaurant)}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-lg-4 col-sm-6 col-12">
             <div class="form-group">
-                <label>Name</label>
-                <input type="text" name="name">
+                <label for="name">Name</label>
+                <input  id="price" class="form-control" type="text" name="name" required>
+                <div class="invalid-feedback">
+                    Please provide a name.
+                </div>
             </div>
         </div>
         <div class="col-lg-4 col-sm-6 col-12">
@@ -45,8 +48,11 @@
         </div> --}}
         <div class="col-lg-4 col-sm-6 col-12">
             <div class="form-group">
-                <label>Price</label>
-                <input type="text" name="price">
+                <label for="price">Price</label>
+                <input id="price" class="form-control" type="number" name="price" required>
+                <div class="invalid-feedback">
+                    Please provide a price
+                </div>
             </div>
         </div>
         {{-- <div class="col-lg-3 col-sm-6 col-12">
@@ -62,7 +68,7 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label>Description</label>
-                <textarea class="form-control" name="description"></textarea>
+                <textarea  name="description"></textarea>
             </div>
         </div>
 
@@ -93,3 +99,22 @@
 </div>
 
 </x-admin.layout>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>

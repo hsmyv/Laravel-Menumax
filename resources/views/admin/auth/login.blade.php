@@ -6,9 +6,9 @@
 <div class="login-wrapper">
 <div class="login-content">
 <div class="login-userset">
-<div class="login-logo">
+{{-- <div class="login-logo">
 <img src="{{asset("admin/assets/img/logo.png")}}" alt="img">
-</div>
+</div> --}}
 <div class="login-userheading">
 <h3>Sign In</h3>
 <h4>Please login to your account</h4>
@@ -37,22 +37,22 @@
   @enderror
 <div class="form-login">
 <div class="alreadyuser">
-<h4><a href="forgetpassword.html" class="hover-a">Forgot Password?</a></h4>
+{{-- <h4><a href="forgetpassword.html" class="hover-a">Forgot Password?</a></h4> --}}
 </div>
 </div>
 <div class="form-login">
 <button class="btn btn-login" type="submit" >Sign In</button>
 </div>
 </form>
-<div class="signinform text-center">
+{{-- <div class="signinform text-center">
 <h4>Don’t have an account? <a href="signup.html" class="hover-a">Sign Up</a></h4>
 </div>
 <div class="form-setlogin">
 <h4>Or sign up with</h4>
-</div>
-<div class="form-sociallink">
+</div> --}}
+{{--<div class="form-sociallink">
 <ul>
-<li>
+ <li>
 <a href="javascript:void(0);">
 <img src="assets/img/icons/google.png" class="me-2" alt="google">
 Sign Up using Google
@@ -65,7 +65,7 @@ Sign Up using Facebook
 </a>
 </li>
 </ul>
-</div>
+</div>--}}
 </div>
 </div>
 <div class="login-img">

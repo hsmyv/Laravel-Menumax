@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLoginRequest;
+use App\Http\Requests\AdminUpdateRequest;
 use App\Models\Admin;
 use App\Models\IpAddress;
 use Illuminate\Http\Request;
@@ -71,5 +72,21 @@ class AuthController extends Controller
         Auth::login($admin);
         return redirect()->route('admins.index');
 
+    }
+
+    function profile()
+    {
+        $admin = auth('admin')->user();
+        return view('admin.profile.edit', compact('admin'));
+    }
+
+    function update_profile(Admin $admin, AdminUpdateRequest $request)
+    {
+        if ($request->filled('password')) {
+            $admin['password'] = $request->input('password');
+        }
+            $admin->update($request->validated());
+            uploadImage($admin, 'admin-image');
+            return redirect()->route('admin.profile')->with('success', 'Profile updated successfully!');
     }
 }

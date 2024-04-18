@@ -27,11 +27,11 @@
 <tbody>
     @foreach ($customer->restaurants as $restaurant)
         <tr>
-        <td>{{$restaurant->name}}</td>
-        <td>{{$restaurant->address}}</td>
-        <td>{{$restaurant->phone}}</td>
-        <td>{{$restaurant->website}}</td>
-        <td>{{$restaurant->delivery_fee}}</td>
+        <td><a href="{{route('restaurants.show', $restaurant)}}">{{ $restaurant->name ?? ''}}</a></td>
+        <td>{{$restaurant->address ?? ''}}</td>
+        <td>{{$restaurant->phone ?? ''}}</td>
+        <td>{{$restaurant->website ?? ''}}</td>
+        <td>{{$restaurant->delivery_fee ?? ''}}</td>
         <td>
             <div class="status-toggle d-flex justify-content-between align-items-center">
                 <input type="checkbox" id="status{{$restaurant->id}}" class="check" {{$restaurant->status ? 'checked' : ''}} data-restaurant-id="{{$restaurant->id}}">

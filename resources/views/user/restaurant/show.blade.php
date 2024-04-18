@@ -3,6 +3,7 @@
 
 <x-user.restaurant.about :restaurant="$restaurant"/>
 
+@if(!$products->isEmpty())
     <section style="background-image: url(user/assets/images/menu-bg.png);"
                 class="our-menu section bg-light repeat-img" id="menu">
                 <div class="sec-wp">
@@ -25,12 +26,12 @@
                                         <ul class="filters">
                                             <div class="filter-active"></div>
                                             <li class="filter" data-filter="@foreach($categories as $category) '{{$category->name}}', @endforeach">
-                                                <img src="{{asset("user/assets/images/menu-1.png")}}" alt="">
+                                                {{-- <img src="{{asset("user/assets/images/menu-1.png")}}" alt=""> --}}
                                                 All
                                             </li>
                                             @foreach($categories as $category )
                                             <li class="filter" data-filter=".{{$category->name}}">
-                                                <img src="{{ $category->getFirstMediaUrl('category-image') ?: asset('user/assets/images/menu-3.png') }}" alt="">
+                                                {{-- <img src="{{ $category->getFirstMediaUrl('category-image') ?: asset('user/assets/images/menu-3.png') }}" alt=""> --}}
                                                 {{$category->name}}
                                             </li>
                                             @endforeach
@@ -53,7 +54,7 @@
                                         </div>
                                         <div class="dish-title">
                                             <h3 class="h3-title">{{$product->name ?? ''}}</h3>
-                                            <p>{{$product->description ?? ''}}</p>
+                                            <p>{{substr($product->description ?? '', 0, 30)}}</p>
                                         </div>
                                         <div class="dish-info">
                                             <ul>
@@ -65,7 +66,7 @@
                                                 @endif
 
                                                 <li>
-                                                    <p>Persons</p>
+                                                    <p>Count</p>
                                                     <b>2</b>
                                                 </li>
                                             </ul>
@@ -73,7 +74,7 @@
                                         <div class="dist-bottom-row">
                                             <ul>
                                                 <li>
-                                                    <b>Price: {{$product->price ?? ''}}</b>
+                                                    <b>Price: {{$product->price ?? ''}} AZN</b>
                                                 </li>
                                                 <li>
                                                     <button class="dish-add-btn">
@@ -91,6 +92,7 @@
                     </div>
                 </div>
     </section>
+@endif
     <x-user.restaurant.schedule :restaurant="$restaurant"/>
 
 </x-user.layout>

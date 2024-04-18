@@ -13,7 +13,7 @@
                     <h5>{{$restaurant->phone}}</h5>
                 </div>
                 <div class="dash-imgs">
-                    <i data-feather="box"></i>
+                    <i data-feather="award"></i>
                 </div>
             </div>
         </div>
@@ -30,77 +30,77 @@
     <h4>Customer list</h4>
     <h6>View/Search Customer</h6>
     </div>
-    <div class="page-btn">
+    {{-- <div class="page-btn">
     <a href="{{route('admins.create')}}" class="btn btn-added">
     <img src="{{asset("admin/assets/img/icons/plus.svg")}}" class="me-1" alt="img">Add Customer
     </a>
-    </div>
+    </div> --}}
     </div>
 
     <div class="card">
     <div class="card-body">
-    <div class="table-top">
-    <div class="search-set">
-    <div class="search-path">
-    <a class="btn btn-filter" id="filter_search">
-    <img src="{{asset("admin/assets/img/icons/filter.svg")}}" alt="img">
-    <span><img src="{{asset("admin/assets/img/icons/closes.svg")}}" alt="img"></span>
-    </a>
-    </div>
-    <div class="search-input">
-    <a class="btn btn-searchset"><img src="{{asset("admin/assets/img/icons/search-white.svg")}}" alt="img"></a>
-    </div>
-    </div>
-    <div class="wordset">
-    <ul>
-    <li>
-    <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img src="{{asset("admin/assets/img/icons/pdf.svg")}}" alt="img"></a>
-    </li>
-    <li>
-    <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img src="{{asset("admin/assets/img/icons/excel.svg")}}" alt="img"></a>
-    </li>
-    <li>
-    <a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img src="{{asset("admin/assets/img/icons/printer.svg")}}" alt="img"></a>
-    </li>
-    </ul>
-    </div>
+    {{-- <div class="table-top">
+        <div class="search-set">
+            <div class="search-path">
+            <a class="btn btn-filter" id="filter_search">
+            <img src="{{asset("admin/assets/img/icons/filter.svg")}}" alt="img">
+            <span><img src="{{asset("admin/assets/img/icons/closes.svg")}}" alt="img"></span>
+            </a>
+            </div>
+            <div class="search-input">
+            <a class="btn btn-searchset"><img src="{{asset("admin/assets/img/icons/search-white.svg")}}" alt="img"></a>
+            </div>
+        </div>
+        <div class="wordset">
+        <ul>
+        <li>
+        <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"><img src="{{asset("admin/assets/img/icons/pdf.svg")}}" alt="img"></a>
+        </li>
+        <li>
+        <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"><img src="{{asset("admin/assets/img/icons/excel.svg")}}" alt="img"></a>
+        </li>
+        <li>
+        <a data-bs-toggle="tooltip" data-bs-placement="top" title="print"><img src="{{asset("admin/assets/img/icons/printer.svg")}}" alt="img"></a>
+        </li>
+        </ul>
+        </div>
     </div>
 
     <div class="card" id="filter_inputs">
-    <div class="card-body pb-0">
-    <div class="row">
-    <div class="col-lg-2 col-sm-6 col-12">
-    <div class="form-group">
-    <select class="select">
-    <option>Choose Category</option>
-    <option>Computers</option>
-    </select>
-    </div>
-    </div>
-    <div class="col-lg-2 col-sm-6 col-12">
-    <div class="form-group">
-    <select class="select">
-    <option>Choose Sub Category</option>
-    <option>Fruits</option>
-    </select>
-    </div>
-    </div>
-    <div class="col-lg-2 col-sm-6 col-12">
-    <div class="form-group">
-    <select class="select">
-    <option>Choose Sub Brand</option>
-    <option>Iphone</option>
-    </select>
-    </div>
-    </div>
-    <div class="col-lg-1 col-sm-6 col-12 ms-auto">
-    <div class="form-group">
-    <a class="btn btn-filters ms-auto"><img src="{{asset("admin/assets/img/icons/search-whites.svg")}}" alt="img"></a>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+        <div class="card-body pb-0">
+        <div class="row">
+        <div class="col-lg-2 col-sm-6 col-12">
+        <div class="form-group">
+        <select class="select">
+        <option>Choose Category</option>
+        <option>Computers</option>
+        </select>
+        </div>
+        </div>
+        <div class="col-lg-2 col-sm-6 col-12">
+        <div class="form-group">
+        <select class="select">
+        <option>Choose Sub Category</option>
+        <option>Fruits</option>
+        </select>
+        </div>
+        </div>
+        <div class="col-lg-2 col-sm-6 col-12">
+        <div class="form-group">
+        <select class="select">
+        <option>Choose Sub Brand</option>
+        <option>Iphone</option>
+        </select>
+        </div>
+        </div>
+        <div class="col-lg-1 col-sm-6 col-12 ms-auto">
+        <div class="form-group">
+        <a class="btn btn-filters ms-auto"><img src="{{asset("admin/assets/img/icons/search-whites.svg")}}" alt="img"></a>
+        </div>
+        </div>
+        </div>
+        </div>
+    </div> --}}
 
     <div class="table-responsive">
     <table class="table  datanew">
@@ -142,9 +142,9 @@
             </td>
             <td class="productimgname">
             <a href="javascript:void(0);" class="product-img">
-            <img src="{{asset("admin/assets/img/product/noimage.png")}}" alt="product">
+            <img src="{{ $admin->getFirstMediaUrl('admin-image') ?: asset('admin/assets/img/product/noimage.png') }}" alt="product">
             </a>
-            <a href="javascript:void(0);">{{$admin->name}}</a>
+            <a href="{{route('admins.edit', $admin)}}">{{$admin->name}}</a>
             </td>
             <td>{{$admin->email}}</td>
             <td>{{$admin->username}}</td>

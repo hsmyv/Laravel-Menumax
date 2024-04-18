@@ -14,7 +14,7 @@
 
     <div class="card">
     <div class="card-body">
-        <form action="{{route('admins.store')}}" method="POST">
+        <form action="{{route('admins.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
     <div class="row">
@@ -37,16 +37,19 @@
     </div>
     </div>
     <div class="col-lg-3 col-sm-6 col-12">
-    <div class="form-group">
-    <label>Password</label>
-    <input type="text" name="password">
-    </div>
+        <div class="form-group">
+        <label>Password</label>
+        <div class="pass-group">
+        <input type="password" class=" pass-input" name="password">
+        <span class="fas toggle-password fa-eye-slash"></span>
+        </div>
+        </div>
     </div>
     <div class="col-lg-12">
         <div class="form-group">
             <label> Customer Image</label>
             <div class="image-upload">
-                <input type="file">
+                <input type="file" name="admin-image">
                 <div class="image-uploads">
                     <img src="{{asset("admin/assets/img/icons/upload.svg")}}" alt="img">
                     <h4>Drag and drop a file to upload</h4>

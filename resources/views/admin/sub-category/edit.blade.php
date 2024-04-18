@@ -47,7 +47,6 @@
                 <div class="form-group">
                     <label>Status</label>
                         <select name="status" class="select">
-                            <option>Choose Status</option>
                             <option value="1" {{ $subcategory->status == 1 ? 'selected' : '' }}>Enable</option>
                             <option value="0" {{ $subcategory->status == 0 ? 'selected' : '' }}>Disable</option>
                     </select>

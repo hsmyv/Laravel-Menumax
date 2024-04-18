@@ -42,7 +42,7 @@
     <div class="col-lg-4 col-sm-6 col-12">
         <div class="form-group">
             <label>Category Code</label>
-            <input type="text" name="code" {{old('code')}}>
+            <input type="text" name="code" value="{{old('code')}}">
         </div>
     </div>
     <div class="col-lg-12">

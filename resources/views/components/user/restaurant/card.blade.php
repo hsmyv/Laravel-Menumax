@@ -9,19 +9,21 @@
         <h3 class="h3-title">{{$restaurant->name}}</h3>
         <div class="social-icon">
             <ul>
-                <li>
-                    <a href="#"><i class="uil uil-facebook-f"></i></a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="uil uil-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="uil uil-youtube"></i>
-                    </a>
-                </li>
+                @foreach ($restaurant->socialNetworks as $socialNetwork)
+                    @if ($socialNetwork->status)
+                        <li>
+                            <a href="{{ $socialNetwork->url }}" target="_blank" >
+                                @if (strpos($socialNetwork->url, 'facebook.com') !== false)
+                                    <i class="uil uil-facebook-f"></i>
+                                @elseif (strpos($socialNetwork->url, 'instagram.com') !== false)
+                                    <i class="uil uil-instagram"></i>
+                                @elseif (strpos($socialNetwork->url, 'youtube.com') !== false)
+                                    <i class="uil uil-youtube"></i>
+                                @endif
+                            </a>
+                        </li>
+                    @endif
+                @endforeach
             </ul>
         </div>
     </div>

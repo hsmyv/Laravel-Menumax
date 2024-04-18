@@ -46,9 +46,9 @@ class RestaurantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurant.show' , compact('restaurant'));
     }
 
     /**
@@ -79,6 +79,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+        $restaurant->products()->delete();
         $restaurant->delete();
         return redirect()->route('admins.index');
     }

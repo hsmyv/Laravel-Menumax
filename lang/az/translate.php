@@ -1,5 +1,6 @@
 <?php
 
 return[
-    "Home" => "Ana Səhifə"
+    "Home" => "Ana Səhifə",
+    "Dashboard" => "İdarə Paneli"
 ];

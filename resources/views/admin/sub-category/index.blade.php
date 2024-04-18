@@ -121,7 +121,7 @@
         <td><a href="javascript:void(0);">{{$category->name}}</a></td>
         <td><a href="javascript:void(0);" style="color:{{$category->parent ? '' : 'red'}}">{{$category->parent->name ?? 'Deleted'}}</a></td>
         <td>{{$category->code}}</td>
-        <td>{{$category->description}}</td>
+        <td>{{substr($category->description ?? 'No Description', 0, 15)}}</td>
         <td>
             <div class="status-toggle d-flex justify-content-between align-items-center">
                 <input type="checkbox" id="status{{$category->id}}" class="check" {{$category->status ? 'checked' : ''}} data-category-id="{{$category->id}}">

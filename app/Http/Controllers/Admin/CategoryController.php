@@ -8,6 +8,7 @@ use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CategoryController extends Controller
 {
@@ -63,6 +64,7 @@ class CategoryController extends Controller
     public function update(Restaurant $restaurant, Category $category, CategoryUpdateRequest $request)
     {
             $category->update($request->validated());
+            uploadImage($category, 'category-image');
             return redirect()->route('categories.edit', [$restaurant, $category])->with('success', 'Category updated successfully!');
     }
 
@@ -85,5 +87,13 @@ class CategoryController extends Controller
         Category::where('id' , $categoryId)->update([
             'status' => $newStatus
         ]);
+    }
+
+    public function remove_image(Request $request)
+    {
+        $media = Media::find($request->mediaId);
+        if ($media) {
+            $media->delete();
+        }
     }
 }

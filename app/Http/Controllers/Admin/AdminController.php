@@ -8,6 +8,8 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+
 class AdminController extends Controller
 {
     public function index()
@@ -29,7 +31,8 @@ class AdminController extends Controller
     public function store(AdminStoreRequest $request)
     {
 
-       Admin::create($request->validated());
+       $admin = Admin::create($request->validated());
+       uploadImage($admin, 'admin-image');
        return redirect()->route('admins.index')->with('success', 'Admin created successfully!');
 
     }
@@ -45,6 +48,7 @@ class AdminController extends Controller
             $admin['password'] = $request->input('password');
         }
             $admin->update($request->validated());
+            uploadImage($admin, 'admin-image');
             return redirect()->route('admins.edit', $admin)->with('success', 'Admin updated successfully!');
         } catch (ValidationException $th) {
             return redirect()->route('admins.edit', $admin)->with('error', 'An error occurred while updating the customer');
@@ -66,6 +70,14 @@ class AdminController extends Controller
         admin::where('id' , $adminId)->update([
             'status' => $newStatus
         ]);
+    }
+
+    public function remove_image(Request $request)
+    {
+        $media = Media::find($request->mediaId);
+        if ($media) {
+            $media->delete();
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-@props(['restaurant', 'table'])
+@props(['restaurant', 'table', 'model'])
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -17,16 +17,16 @@
             <div class="col-lg-4">
                 <div class="table-title text-center">
                     <h3>Monday</h3>
-                    <p>9:00 am - 22:00 pm</p>
+                    <p>{{$model->monday}}</p>
                     <br>
                     <h3>Tuesday</h3>
-                    <p>9:00 am - 22:00 pm</p>
+                    <p>{{$model->tuesday}}</p>
                     <br>
                     <h3>Wednesday</h3>
-                    <p>9:00 am - 22:00 pm</p>
+                    <p>{{$model->wednesday}}</p>
                     <br>
-                    <h3>Thrusday</h3>
-                    <p>9:00 am - 22:00 pm</p>
+                    <h3>Thursday</h3>
+                    <p>{{$model->thursday}}</p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -38,13 +38,13 @@
             <div class="col-lg-4">
                 <div class="table-title text-center">
                     <h3>Friday</h3>
-                    <p>9:00 am - 22:00 pm</p>
+                    <p>{{$model->friday}}</p>
                     <br>
                     <h3>Saturday</h3>
-                    <p>9:00 am - 22:00 pm</p>
+                    <p>{{$model->saturday}}</p>
                     <br>
                     <h3>Sunday</h3>
-                    <p>9:00 am - 22:00 pm</p>
+                    <p>{{$model->sunday}}</p>
 
                 </div>
             </div>

@@ -8,7 +8,7 @@
                         <img src="{{asset("user/assets/images/berry.png")}}" alt="">
                     </div>
                     <div class="banner-shape-2 w-100" data-depth="0.25">
-                        <img src="{{asset("user/assets/images/leaf.png")}} alt="">
+                        <img src="{{asset("user/assets/images/leaf.png")}}" alt="">
                     </div>
                 </div>
                 <div class="sec-wp">
@@ -73,57 +73,11 @@
             </section>
 
             <x-user.restaurant.restaurants :restaurants="$restaurants"/>
+            <x-user.restaurant.left-right/>
+            <x-user.restaurant.gallery/>
 
 
 
-            {{-- <section class="two-col-sec section">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="sec-img mt-5">
-                                <img src="assets/images/pizza.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="sec-text">
-                                <h2 class="xxl-title">Chicken Pepperoni</h2>
-                                <p>This is Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolores
-                                    eligendi earum eveniet soluta officiis asperiores repellat, eum praesentium nihil
-                                    totam. Non ipsa expedita repellat atque mollitia praesentium assumenda quo
-                                    distinctio excepturi nobis tenetur, cum ab vitae fugiat hic aspernatur? Quos
-                                    laboriosam, repudiandae exercitationem atque a excepturi vel. Voluptas, ipsa.</p>
-                                <p>This is Lorem ipsum dolor sit amet consectetur adipisicing elit. At fugit laborum
-                                    voluptas magnam sed ad illum? Minus officiis quod deserunt.</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="two-col-sec section pt-0">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 order-lg-1 order-2">
-                            <div class="sec-text">
-                                <h2 class="xxl-title">Chicken Pepperoni</h2>
-                                <p>This is Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolores
-                                    eligendi earum eveniet soluta officiis asperiores repellat, eum praesentium nihil
-                                    totam. Non ipsa expedita repellat atque mollitia praesentium assumenda quo
-                                    distinctio excepturi nobis tenetur, cum ab vitae fugiat hic aspernatur? Quos
-                                    laboriosam, repudiandae exercitationem atque a excepturi vel. Voluptas, ipsa.</p>
-                                <p>This is Lorem ipsum dolor sit amet consectetur adipisicing elit. At fugit laborum
-                                    voluptas magnam sed ad illum? Minus officiis quod deserunt.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 order-lg-2 order-1">
-                            <div class="sec-img">
-                                <img src="assets/images/sushi.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> --}}
 
 
 
@@ -245,7 +199,7 @@
                 </div>
             </section> --}}
 
-            <section class="faq-sec section-repeat-img" style="background-image: url(assets/images/faq-bg.png);">
+            {{-- <section class="faq-sec section-repeat-img" style="background-image: url(assets/images/faq-bg.png);">
                 <div class="sec-wp">
                     <div class="container">
                         <div class="row">
@@ -298,7 +252,7 @@
                     </div>
                 </div>
 
-            </section>
+            </section> --}}
 
 
             {{-- <div class="bg-pattern bg-light repeat-img"
@@ -363,9 +317,9 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> --}}
 
-                <section class="newsletter-sec section pt-0">
+                {{-- <section class="newsletter-sec section pt-0">
                     <div class="sec-wp">
                         <div class="container">
                             <div class="row">
@@ -390,8 +344,8 @@
                             </div>
                         </div>
                     </div>
-                </section>
-            </div> --}}
+                </section> --}}
+            {{-- </div> --}}
 
             <!-- footer starts  -->
             <x-user.footer/>

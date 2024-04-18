@@ -11,6 +11,8 @@
 <h6>Update restaurant</h6>
 </div>
 </div>
+<h1>{{$restaurant->name}}</h1>
+<br>
 @if(session()->has('success'))
 <div class="alert alert-primary alert-dismissible fade show" role="alert">
     <strong>Success!</strong> {{session('success')}}
@@ -59,7 +61,6 @@
     <div class="form-group">
         <label>Status</label>
             <select name="status" class="select">
-                <option>Choose Status</option>
                 <option value="1" {{ $restaurant->status == 1 ? 'selected' : '' }}>Enable</option>
                 <option value="0" {{ $restaurant->status == 0 ? 'selected' : '' }}>Disable</option>
         </select>
@@ -308,6 +309,19 @@
 
 
     </div>
+    </div>
+    </div>
+</div>
+
+<div class="page-wrapper">
+    <div class="content">
+
+    <div class="col-lg-12">
+        <form action="{{route('restaurants.destroy', $restaurant)}}" method="POST">
+            @csrf
+            @method("DELETE")
+            <button class="btn btn-submit me-2">DELETE</button>
+        </form>
     </div>
     </div>
 </div>

@@ -9,14 +9,14 @@
     </div>
 
     <div class="sec-wp">
-    <x-user.restaurant.schedule-table :restaurant="$restaurant" :table="'Opening Table'" />
+    <x-user.restaurant.schedule-table :restaurant="$restaurant" :table="'Opening Table'" :model="$restaurant->openingTime"/>
 
         <x-user.restaurant.gallery :restaurant="$restaurant"/>
 
         <br>
         <br>
         <br>
-        <x-user.restaurant.schedule-table :restaurant="$restaurant" :table="'Delivery Table'" />
+        <x-user.restaurant.schedule-table :restaurant="$restaurant" :table="'Delivery Table'" :model="$restaurant->deliveryInformation"/>
 
 
 

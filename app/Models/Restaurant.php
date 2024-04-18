@@ -37,5 +37,19 @@ class Restaurant extends Model implements HasMedia
         return $this->hasOne(DeliveryInformation::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+    public function socialNetworks()
+    {
+        return $this->hasMany(SocialNetwork::class);
+    }
+
+    public function schedule($model)
+    {
+        return $this->hasOne($model);
+    }
+
 
 }

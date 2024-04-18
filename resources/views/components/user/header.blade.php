@@ -18,19 +18,27 @@
                         </ul>
                     </nav>
                     <div class="header-right">
-                        <form action="#" class="header-search-form for-des">
+                        {{-- <form action="#" class="header-search-form for-des">
                             <input type="search" class="form-input" placeholder="Search Here...">
                             <button type="submit">
                                 <i class="uil uil-search"></i>
                             </button>
-                        </form>
+                        </form> --}}
                         <a href="javascript:void(0)" class="header-btn header-cart">
                             <i class="uil uil-shopping-bag"></i>
                             <span class="cart-number">3</span>
                         </a>
-                        <a href="javascript:void(0)" class="header-btn">
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        @if ($localeCode != LaravelLocalization::getCurrentLocale())
+                            <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="header-btn">
+                                {{ $localeCode }}
+                            </a>
+                        @endif
+                    @endforeach
+
+                        {{-- <a href="javascript:void(0)" class="header-btn">
                             <i class="uil uil-user-md"></i>
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
             </div>

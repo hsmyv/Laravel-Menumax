@@ -8,7 +8,7 @@
                         <p class="sec-sub-title mb-3">Your Choice</p>
                         <h2 class="h2-title">Discovery the Restaurants</h2>
                         <div class="sec-title-shape mb-4">
-                            <img src="assets/images/title-shape.svg" alt="">
+                            <img src="{{asset("user/assets/images/title-shape.svg")}}" alt="">
                         </div>
                     </div>
                 </div>

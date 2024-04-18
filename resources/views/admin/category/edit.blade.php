@@ -26,7 +26,7 @@
     @endif
     <div class="card">
     <div class="card-body">
-        <form action="{{route('categories.update', [$restaurant,$category])}}" method="POST">
+        <form action="{{route('categories.update', [$restaurant,$category])}}" method="POST" enctype="multipart/form-data">
     <div class="row">
             @csrf
             @method('PUT')
@@ -46,7 +46,6 @@
                 <div class="form-group">
                     <label>Status</label>
                         <select name="status" class="select">
-                            <option>Choose Status</option>
                             <option value="1" {{ $category->status == 1 ? 'selected' : '' }}>Enable</option>
                             <option value="0" {{ $category->status == 0 ? 'selected' : '' }}>Disable</option>
                     </select>
@@ -58,38 +57,42 @@
                     <textarea name="description" class="form-control">{{old('description', $category->description)}}</textarea>
                 </div>
             </div>
-            <div class="col-lg-12">
+            {{-- <div class="col-lg-12">
                 <div class="form-group">
                     <label> Category Image</label>
                     <div class="image-upload">
-                        <input type="file">
+                        <input type="file" name="category-image">
                         <div class="image-uploads">
                             <img src="{{asset("admin/assets/img/icons/upload.svg")}}" alt="img">
                             <h4>Drag and drop a file to upload</h4>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12">
+            </div> --}}
+            {{-- <div class="col-12">
                 <div class="product-list">
                     <ul class="row">
-                        <li class="ps-0">
+                        @if ($category->getFirstMediaUrl('category-image'))
+                        <li>
                             <div class="productviews">
                                 <div class="productviewsimg">
-                                    <img src="{{asset("admin/assets/img/icons/macbook.svg")}}" alt="img">
+                                    <img src="{{ $category->getFirstMediaUrl('category-image')}}" alt="img">
                                 </div>
                                 <div class="productviewscontent">
-                                <div class="productviewsname">
-                                        <h2>macbookpro.jpg</h2>
-                                        <h3>581kb</h3>
+                                    <div class="productviewsname">
+                                        <h2>{{$category->getFirstMedia('category-image')->file_name}}</h2>
+                                        <h3>{{$category->getFirstMedia('category-image')->humanReadableSize}}</h3>
                                     </div>
-                                    <a href="javascript:void(0);" class="hideset">x</a>
+                                    <a  id="removeCategoryImageBtn" data-media-id="{{$category->getFirstMedia('category-image')->id}}" href="javascript:void(0);" class="hideset">x</a>
                                 </div>
                             </div>
                         </li>
+                        @endif
+
                     </ul>
                 </div>
-            </div>
+
+            </div> --}}
             <div class="col-lg-12">
                 <button class="btn btn-submit me-2">Submit</button>
                 <a href="{{route('categories.index', $restaurant)}}" class="btn btn-cancel">Cancel</a>
@@ -106,3 +109,27 @@
 
 
     </x-admin.layout>
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+                $(document).on('click', '#removeCategoryImageBtn', function() {
+                    var mediaId = $(this).data('media-id');
+                    var $button = $(this); // Store a reference to the clicked button
+
+                    $.ajax({
+                        url: '{{route('category-image.delete')}}',
+                        method: 'POST',
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        data: { mediaId: mediaId },
+                        success: function(response) {
+                            $button.closest('.img-single').remove();
+                        },
+                        error: function(error) {
+                            // Handle errors, if any
+                        }
+                    });
+                });
+            });
+        </script>

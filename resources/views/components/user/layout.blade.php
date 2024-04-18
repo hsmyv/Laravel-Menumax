@@ -28,7 +28,7 @@
     <script src="{{asset("user/assets/js/jquery-3.5.1.min.js")}}"></script>
     <!-- bootstrap -->
     <script src="{{asset("user/assets/js/bootstrap.min.js")}}"></script>
-    <script src="assets/js/popper.min.js"></script>
+    <script src="{{asset("user/assets/js/popper.min.js")}}"></script>
 
     <!-- fontawesome  -->
     <script src="{{asset("user/assets/js/font-awesome.min.js")}}"></script>

@@ -121,7 +121,7 @@
         <a href="javascript:void(0);" class="product-img">
         <img src="{{asset("admin/assets/img/product/noimage.png")}}" alt="product">
         </a>
-        <a href="javascript:void(0);">{{$category->name}}</a>
+        <a href="{{route('categories.edit', [$restaurant, $category])}}">{{$category->name}}</a>
         </td>
         <td>{{$category->code}}</td>
         <td>{{$category->description}}</td>

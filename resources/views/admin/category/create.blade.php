@@ -20,13 +20,16 @@
         </div>
     @endif
 
-    <form action="{{route('categories.store', $restaurant)}}" method="POST">
+    <form class="needs-validation" action="{{route('categories.store', $restaurant)}}" method="POST" novalidate>
     <div class="row">
         @csrf
         <div class="col-lg-6 col-sm-6 col-12">
             <div class="form-group">
-                <label>Category Name</label>
-                    <input type="text" name="name" value="{{old('name')}}">
+                <label for="name">Category Name</label>
+                    <input id="name" class="form-control" type="text" name="name" value="{{old('name')}}" required>
+                    <div class="invalid-feedback">
+                        Please provide a name
+                    </div>
             </div>
         </div>
         <div class="col-lg-6 col-sm-6 col-12">
@@ -38,10 +41,10 @@
         <div class="col-lg-12">
             <div class="form-group">
             <label>Description</label>
-                <textarea name="description" class="form-control">{{old('description')}}</textarea>
+                <textarea name="description">{{old('description')}}</textarea>
             </div>
         </div>
-        <div class="col-lg-12">
+        {{-- <div class="col-lg-12">
             <div class="form-group">
                 <label> Product Image</label>
                 <div class="image-upload">
@@ -52,7 +55,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-lg-12">
             <button class="btn btn-submit me-2">Submit</button>
             <a href="{{route('categories.index', $restaurant)}}" class="btn btn-cancel">Cancel</a>
@@ -69,3 +72,22 @@
 
 
 </x-admin.layout>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>

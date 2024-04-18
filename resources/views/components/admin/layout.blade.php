@@ -11,7 +11,7 @@
 
 <title>Inventory Management System</title>
 
-<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.jpg">
+<link rel="shortcut icon" type="image/x-icon" href="{{asset("admin/assets/img/favicon.jpg")}}">
 
 <link rel="stylesheet" href="{{asset("admin/assets/css/bootstrap.min.css")}}">
 
@@ -28,9 +28,9 @@
 </head>
 <body>
 
-    <div id="global-loader">
+    {{-- <div id="global-loader">
         <div class="whirly-loader"> </div>
-    </div>
+    </div> --}}
 
 
  <x-admin.header/>
