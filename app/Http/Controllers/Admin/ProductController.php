@@ -95,4 +95,24 @@ class ProductController extends Controller
         }
 
     }
+
+    public function sendOrder(Request $request)
+    {
+        $productId = $request->input('productId');
+        $product = Product::find($productId);
+        $phone = $product->restaurant->phone;
+        $totalPriceForRequest = $request->input('totalPrice');
+        $count = $request->input('count');
+
+        $message = "Yeni sifariş:\n";
+        $message .= "Məhsul: $product->name\n";
+        $message .= "Qiymət: $product->price\n";
+        $message .= "Say: $count dənə\n";
+        $message .= "Ümumi qiymət: $totalPriceForRequest\n";
+
+        $whatsappLink = 'https://wa.me/'. $phone .'?text=' . urlencode($message);
+
+        return response()->json(['whatsappLink' => $whatsappLink]);
+    }
+
 }

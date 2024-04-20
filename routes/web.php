@@ -51,6 +51,7 @@ Route::group(
         Route::get('/', [MainController::class, 'index'])->name('main.index');
         Route::get('/restaurants', [MainController::class, 'restaurants'])->name('main.restaurant.index');
         Route::get('/restaurants/show/{restaurant}', [MainController::class, 'restaurantsShow'])->name('main.restaurant.show');
+        Route::post('/send-order', [ProductController::class, 'sendOrder']);
 
     });
 

@@ -890,6 +890,26 @@ p {
     background: linear-gradient(145deg, #e3a92b, #ffc933);
 }
 
+.checkoutButton-add-btn {
+    width: 80px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    transition: 0.3s;
+    background: linear-gradient(145deg, #ffc954, #ffbc00);
+    box-shadow: inset 4px 4px 8px #d6a029, inset -4px -4px 8px #ffd837;
+}
+
+.checkoutButton-add-btn i {
+    color: #ffffff;
+    font-size: 22px;
+}
+
+.checkoutButton-add-btn:hover {
+    background: linear-gradient(145deg, #e3a92b, #ffc933);
+}
+
 /* ************ */
 
 .xxl-title {
