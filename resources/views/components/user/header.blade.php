@@ -24,10 +24,10 @@
                                 <i class="uil uil-search"></i>
                             </button>
                         </form> --}}
-                        <a href="javascript:void(0)" class="header-btn header-cart">
+                        {{-- <a href="javascript:void(0)" class="header-btn header-cart">
                             <i class="uil uil-shopping-bag"></i>
                             <span class="cart-number">3</span>
-                        </a>
+                        </a> --}}
                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         @if ($localeCode != LaravelLocalization::getCurrentLocale())
                             <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="header-btn">
