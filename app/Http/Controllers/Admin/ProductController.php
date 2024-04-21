@@ -106,7 +106,7 @@ class ProductController extends Controller
 
         $message = "Yeni sifariş:\n";
         $message .= "Məhsul: $product->name\n";
-        $message .= "Qiymət: $product->price\n";
+        $message .= "Qiymət: $product->price AZN\n";
         $message .= "Say: $count dənə\n";
         $message .= "Ümumi qiymət: $totalPriceForRequest\n";
 
