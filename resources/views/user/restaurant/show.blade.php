@@ -52,8 +52,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="sec-title text-center mb-5">
-                                    <p class="sec-sub-title mb-3">our menu</p>
-                                    <h2 class="h2-title">wake up early, <span>eat fresh & healthy</span></h2>
+                                    <p class="sec-sub-title mb-3">{{__("translate.our menu")}}</p>
+                                    <h2 class="h2-title">{{__("translate.wake up early")}}, <span>{{__("translate.eat fresh & healthy")}}</span></h2>
                                     <div class="sec-title-shape mb-4">
                                         <img src="{{asset("user/assets/images/title-shape.svg")}}" alt="">
                                     </div>

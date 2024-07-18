@@ -7,7 +7,7 @@
                 <img src="{{asset("admin/assets/img/logo.png")}}" alt="">
             </a>
             <a href="{{route('admins.index')}}" class="logo-small">
-                <img src="{{asset("admin/assets/img/logo-small.png")}}" alt="">
+                <img src="{{asset("admin/assets/img/logo.png")}}" alt="">
             </a>
             <a id="toggle_btn" href="javascript:void(0);"></a>
         </div>

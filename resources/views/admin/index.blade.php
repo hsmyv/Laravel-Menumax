@@ -6,7 +6,7 @@
     <div class="content">
     <div class="row">
     @foreach ($restaurants as $restaurant)
-        <div class="col-lg-3 col-sm-6 col-12 d-flex rName" data-id="{{$restaurant->id}}">
+        <div class="col-lg-3 col-sm-6 col-12 d-flex rName" data-id="{{$restaurant->id}}" style="cursor: pointer;">
             <div class="dash-count">
                 <div class="dash-counts">
                     <h4>{{$restaurant->name}}</h4>

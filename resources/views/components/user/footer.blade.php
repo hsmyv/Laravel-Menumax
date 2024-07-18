@@ -73,7 +73,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="copyright-text">
-                        <p>Copyright &copy; <span id="copy-year">2023</span> All Rights Reserved.
+                        <p>Copyright &copy; <span id="copy-year">2023</span> {{__("translate.All Rights Reserved")}}.
                         </p>
                     </div>
                 </div>

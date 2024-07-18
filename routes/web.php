@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\User\MainController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-
+use Illuminate\Support\Facades\Artisan;
 
 
 Route::get('/admin/login', [AuthController::class, 'login_form'])->name('admin.login.form');
@@ -18,7 +18,10 @@ Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login
 Route::post('/admin/switch-account/{id}', [AuthController::class, 'switch_account'])->name('admin.switchAccount');
 
 
-
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+    return 'Link has been connected';
+});
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),

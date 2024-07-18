@@ -17,14 +17,13 @@
                             <div class="col-lg-6">
                                 <div class="banner-text">
                                     <h1 class="h1-title">
-                                        Welcome to our
-                                        <span>Menu</span>
-                                        restaurant.
+                                        {{__("translate.Welcome to our")}}
+                                        <span>{{__("translate.Menu")}}</span>
+                                        {{__("translate.restaurant")}}.
                                     </h1>
-                                    <p>This is Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam eius
-                                        vel tempore consectetur nesciunt? Nam eius tenetur recusandae optio aperiam.</p>
+                                    <p>{{__("translate.Create a digital menu for your restaurant, bar, club, pub, teahouse, or other niche venue. Engage more with your customers")}}.</p>
                                     <div class="banner-btn mt-4">
-                                        <a href="#menu" class="sec-btn">Check our Menu</a>
+                                        <a href="{{route('main.restaurant.index')}}" class="sec-btn">{{__("translate.Check our Restaurants")}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -33,10 +32,10 @@
                                     <div class="banner-img" style="background-image: url({{asset('user/assets/images/main-b.jpg')}});">
                                     </div>
                                 </div>
-                                <div class="banner-img-text mt-4 m-auto">
+                                {{-- <div class="banner-img-text mt-4 m-auto">
                                     <h5 class="h5-title">Sushi</h5>
                                     <p>this is Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -48,7 +47,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="brand-title mb-5">
-                                <h5 class="h5-title">Trusted by 70+ companies</h5>
+                                <h5 class="h5-title">{{__("translate.Trusted by 70+ companies")}}</h5>
                             </div>
                             <div class="brands-row">
                                 <div class="brands-box">

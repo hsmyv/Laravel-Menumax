@@ -5,7 +5,7 @@
             <div class="col-lg-12">
                 <div class="sec-title text-center mb-5">
                     {{-- <p class="sec-sub-title mb-3">About Us</p> --}}
-                    <h2 class="h2-title">Discover our <span>{{$restaurant->name}}</span></h2>
+                    <h2 class="h2-title">{{__("translate.Discover our")}}<span>{{$restaurant->name}}</span></h2>
                     <div class="sec-title-shape mb-4">
                         <img src="{{asset("user/assets/images/title-shape.svg")}}" alt="">
                     </div>
