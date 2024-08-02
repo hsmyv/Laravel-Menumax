@@ -68,7 +68,7 @@
                                             <div class="filter-active"></div>
                                             <li class="filter" data-filter="@foreach($categories as $category) '{{$category->name}}', @endforeach">
                                                 {{-- <img src="{{asset("user/assets/images/menu-1.png")}}" alt=""> --}}
-                                                All
+                                                {{__("translate.All")}}
                                             </li>
                                             @foreach($categories as $category )
                                             <li class="filter" data-filter=".{{$category->name}}">

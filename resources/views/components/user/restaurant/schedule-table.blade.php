@@ -3,8 +3,15 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="sec-title text-center mb-5">
-                <p class="sec-sub-title mb-3">Book Table</p>
-                <h2 class="h2-title">{{$table}}</h2>
+                <p class="sec-sub-title mb-3">{{__("translate.Book Table")}}</p>
+                <h2 class="h2-title">
+                    @if($table == "Opening Table")
+                        {{__("translate.Opening Table")}}
+                    @elseif($table == "Delivery Table")
+                    {{__("translate.Delivery Table")}}
+
+                    @endif
+                </h2>
                 <div class="sec-title-shape mb-4">
                     <img src="{{asset("user/assets/images/title-shape.svg")}}" alt="">
                 </div>
@@ -16,16 +23,16 @@
         <div class="row align-items-center">
             <div class="col-lg-4">
                 <div class="table-title text-center">
-                    <h3>Monday</h3>
+                    <h3>{{__("translate.Monday")}}</h3>
                     <p>{{$model->monday}}</p>
                     <br>
-                    <h3>Tuesday</h3>
+                    <h3>{{__("translate.Tuesday")}}</h3>
                     <p>{{$model->tuesday}}</p>
                     <br>
-                    <h3>Wednesday</h3>
+                    <h3>{{(__("translate.Wednesday"))}}</h3>
                     <p>{{$model->wednesday}}</p>
                     <br>
-                    <h3>Thursday</h3>
+                    <h3>{{__("translate.Thursday")}}</h3>
                     <p>{{$model->thursday}}</p>
                 </div>
             </div>
@@ -37,13 +44,13 @@
             </div>
             <div class="col-lg-4">
                 <div class="table-title text-center">
-                    <h3>Friday</h3>
+                    <h3>{{__("translate.Friday")}}</h3>
                     <p>{{$model->friday}}</p>
                     <br>
-                    <h3>Saturday</h3>
+                    <h3>{{__("translate.Saturday")}}</h3>
                     <p>{{$model->saturday}}</p>
                     <br>
-                    <h3>Sunday</h3>
+                    <h3>{{__("translate.Sunday")}}</h3>
                     <p>{{$model->sunday}}</p>
 
                 </div>

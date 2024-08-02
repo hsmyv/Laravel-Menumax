@@ -21,5 +21,19 @@ return[
     "All Rights Reserved" => "Bütün hüquqlar qorunur",
     "Your Choice" => "SƏNİN SEÇİMİN",
     "Trusted by 70+ companies" => "70+ ŞİRKƏT TƏRƏFİNDƏN Etibarlı",
+    "Category" => "Kateqoriya",
+    "Count" => "Say",
+    "Price" => "Qiymət",
+    "Book Table" => "Sifariş cədvəli",
+    "Opening Table" => "Açılış vaxtı",
+    "Delivery Table" => "Çatdırılma vaxtı",
+    "Monday" => "Bazar ertəsi",
+    "Tuesday" => "Çərşənbə axşamı",
+    "Wednesday" => "Çərşənbə",
+    "Thursday" => "Cümə axşamı",
+    "Friday" => "Cümə",
+    "Saturday" => "Şənbə",
+    "Sunday" => "Bazar",
+    "All" => "Hamısı"
 
 ];
