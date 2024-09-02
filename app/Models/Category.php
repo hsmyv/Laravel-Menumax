@@ -29,7 +29,7 @@ class Category extends Model implements HasMedia
     }
     public function scopeCategories($query, $id)
     {
-        return $query->whereNull('parent_id')->where('restaurant_id', $id)->latest()->get();
+        return $query->whereNull('parent_id')->where('restaurant_id', $id)->where('status', 1)->latest()->get();
     }
     public function scopeSubCategories($query, $id)
     {

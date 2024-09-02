@@ -34,6 +34,8 @@ return[
     "Friday" => "Cümə",
     "Saturday" => "Şənbə",
     "Sunday" => "Bazar",
-    "All" => "Hamısı"
+    "All" => "Hamısı",
+    "About Us" => "Haqqımızda",
+    "Contact Us" => "Bizimlə Əlaqə"
 
 ];

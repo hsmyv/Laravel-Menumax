@@ -14,7 +14,9 @@
                     <nav class="header-menu">
                         <ul class="menu food-nav-menu">
                             <li><a href="{{route('main.index')}}">{{__("translate.Home")}}</a></li>
+                            <li><a href="{{route('main.index')}}">{{__("translate.About Us")}}</a></li>
                             <li><a href="{{route('main.restaurant.index')}}">{{__("translate.Restaurants")}}</a></li>
+                            <li><a href="{{route('main.index')}}">{{__("translate.Contact Us")}}</a></li>
                         </ul>
                     </nav>
                     <div class="header-right">

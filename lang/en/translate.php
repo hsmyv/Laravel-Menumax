@@ -35,5 +35,7 @@ return[
     "Saturday" => "Saturday",
     "Sunday" => "Sunday",
     "All" => "All",
+    "About Us" => "About Us",
+    "Contact Us" => "Contact Us",
 
 ];
